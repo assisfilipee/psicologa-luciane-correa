@@ -1,0 +1,1431 @@
+/* =========================================================
+   LUCIANE CORRÊA
+   PSICÓLOGA E HIPNOTERAPEUTA
+
+   ARQUIVO: style.css
+   Base global do projeto
+========================================================= */
+
+
+/* =========================================================
+   VARIÁVEIS
+========================================================= */
+
+:root {
+
+  /* CORES — BASE */
+  --color-bg: #f7f5f2;
+  --color-bg-soft: #f1edef;
+  --color-surface: #ffffff;
+
+  /* IDENTIDADE */
+  --color-primary: #7040b5;
+  --color-primary-light: #a88bd1;
+  --color-primary-soft: #e8def4;
+  --color-primary-dark: #37204f;
+  --color-primary-deep: #241333;
+
+  /* TEXTO */
+  --color-text: #211c24;
+  --color-text-soft: #6f6873;
+  --color-text-light: #938b97;
+
+  /* ESTRUTURA */
+  --color-border: rgba(33, 28, 36, 0.1);
+  --color-border-light: rgba(33, 28, 36, 0.06);
+
+  /* CORES AUXILIARES */
+  --color-white: #ffffff;
+  --color-black: #121014;
+
+
+  /* =======================================================
+     TIPOGRAFIA
+  ======================================================== */
+
+  --font-display: "DM Serif Display", Georgia, serif;
+  --font-body: "DM Sans", Arial, sans-serif;
+
+
+  /* =======================================================
+     CONTAINER
+  ======================================================== */
+
+  --container-width: 1380px;
+  --container-padding: 48px;
+
+
+  /* =======================================================
+     HEADER
+  ======================================================== */
+
+  --header-height: 92px;
+  --header-scrolled-height: 78px;
+
+
+  /* =======================================================
+     ESPAÇAMENTOS
+  ======================================================== */
+
+  --section-space: 130px;
+
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 40px;
+  --space-xl: 64px;
+  --space-2xl: 96px;
+
+
+  /* =======================================================
+     BORDAS
+  ======================================================== */
+
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 28px;
+  --radius-xl: 40px;
+  --radius-full: 999px;
+
+
+  /* =======================================================
+     TRANSIÇÕES
+  ======================================================== */
+
+  --transition-fast:
+    180ms cubic-bezier(0.2, 0.65, 0.3, 1);
+
+  --transition-base:
+    350ms cubic-bezier(0.2, 0.65, 0.3, 1);
+
+  --transition-slow:
+    700ms cubic-bezier(0.16, 1, 0.3, 1);
+
+
+  /* =======================================================
+     SOMBRAS
+  ======================================================== */
+
+  --shadow-soft:
+    0 18px 60px rgba(31, 20, 36, 0.08);
+
+  --shadow-image:
+    0 30px 80px rgba(31, 20, 36, 0.12);
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+html {
+  scroll-behavior: smooth;
+
+  /* Ao navegar por âncoras, o header já estará compacto */
+  scroll-padding-top: var(--header-scrolled-height);
+}
+
+
+body {
+  min-height: 100vh;
+
+  background:
+    var(--color-bg);
+
+  color:
+    var(--color-text);
+
+  font-family:
+    var(--font-body);
+
+  font-size:
+    16px;
+
+  font-weight:
+    400;
+
+  line-height:
+    1.6;
+
+  text-rendering:
+    optimizeLegibility;
+
+  -webkit-font-smoothing:
+    antialiased;
+
+  -moz-osx-font-smoothing:
+    grayscale;
+
+  overflow-x:
+    hidden;
+}
+
+
+/* =========================================================
+   SELEÇÃO DE TEXTO
+========================================================= */
+
+::selection {
+  background:
+    var(--color-primary);
+
+  color:
+    var(--color-white);
+}
+
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+
+::-webkit-scrollbar-track {
+  background:
+    var(--color-bg);
+}
+
+
+::-webkit-scrollbar-thumb {
+  background:
+    rgba(112, 64, 181, 0.35);
+
+  border:
+    3px solid var(--color-bg);
+
+  border-radius:
+    var(--radius-full);
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+  background:
+    rgba(112, 64, 181, 0.55);
+}
+
+
+/* =========================================================
+   ELEMENTOS GERAIS
+========================================================= */
+
+img,
+picture,
+svg,
+video,
+canvas {
+  display: block;
+
+  max-width: 100%;
+}
+
+
+img {
+  height: auto;
+}
+
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+
+button {
+  border: 0;
+
+  background:
+    none;
+
+  color:
+    inherit;
+
+  cursor:
+    pointer;
+}
+
+
+a {
+  color:
+    inherit;
+
+  text-decoration:
+    none;
+}
+
+
+ul,
+ol {
+  list-style:
+    none;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight:
+    400;
+
+  line-height:
+    1.05;
+}
+
+
+p {
+  max-width:
+    70ch;
+}
+
+
+/* =========================================================
+   ACESSIBILIDADE
+========================================================= */
+
+:focus-visible {
+  outline:
+    2px solid var(--color-primary);
+
+  outline-offset:
+    4px;
+}
+
+
+[hidden] {
+  display:
+    none !important;
+}
+
+
+/* =========================================================
+   CONTAINER GLOBAL
+========================================================= */
+
+.container {
+  width:
+    min(
+      calc(100% - (var(--container-padding) * 2)),
+      var(--container-width)
+    );
+
+  margin-inline:
+    auto;
+}
+
+
+/* =========================================================
+   SEÇÕES
+========================================================= */
+
+section {
+  position:
+    relative;
+
+  width:
+    100%;
+}
+
+
+.section {
+  padding:
+    var(--section-space) 0;
+}
+
+
+.section--white {
+  background:
+    var(--color-surface);
+}
+
+
+.section--soft {
+  background:
+    var(--color-bg-soft);
+}
+
+
+.section--dark {
+  background:
+    var(--color-primary-deep);
+
+  color:
+    var(--color-white);
+}
+
+
+/* =========================================================
+   EYEBROW GLOBAL
+========================================================= */
+
+.eyebrow {
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  gap:
+    10px;
+
+  color:
+    var(--color-primary);
+
+  font-size:
+    0.74rem;
+
+  font-weight:
+    600;
+
+  line-height:
+    1;
+
+  letter-spacing:
+    0.14em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.eyebrow::before {
+  content:
+    "";
+
+  width:
+    6px;
+
+  height:
+    6px;
+
+  border-radius:
+    50%;
+
+  background:
+    var(--color-primary);
+}
+
+
+/* =========================================================
+   TÍTULOS GLOBAIS
+========================================================= */
+
+.section-title {
+  max-width:
+    900px;
+
+  margin-top:
+    22px;
+
+  color:
+    var(--color-text);
+
+  font-family:
+    var(--font-display);
+
+  font-size:
+    clamp(3rem, 5vw, 5.5rem);
+
+  font-weight:
+    400;
+
+  line-height:
+    0.98;
+
+  letter-spacing:
+    -0.035em;
+}
+
+
+.section-title em {
+  color:
+    var(--color-primary);
+
+  font-style:
+    italic;
+}
+
+
+.section-description {
+  max-width:
+    610px;
+
+  margin-top:
+    28px;
+
+  color:
+    var(--color-text-soft);
+
+  font-size:
+    1.05rem;
+
+  font-weight:
+    400;
+
+  line-height:
+    1.75;
+}
+
+
+/* =========================================================
+   BOTÕES
+========================================================= */
+
+.button {
+  position:
+    relative;
+
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  gap:
+    13px;
+
+  min-height:
+    54px;
+
+  padding:
+    0 25px;
+
+  border-radius:
+    var(--radius-full);
+
+  font-size:
+    0.9rem;
+
+  font-weight:
+    500;
+
+  line-height:
+    1;
+
+  letter-spacing:
+    -0.01em;
+
+  transition:
+    transform var(--transition-base),
+    background-color var(--transition-base),
+    color var(--transition-base),
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+
+.button span {
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  font-size:
+    1rem;
+
+  transition:
+    transform var(--transition-base);
+}
+
+
+/* =========================================================
+   BOTÃO PRIMÁRIO
+========================================================= */
+
+.button--primary {
+  background:
+    var(--color-primary-dark);
+
+  color:
+    var(--color-white);
+
+  box-shadow:
+    0 12px 32px rgba(55, 32, 79, 0.14);
+}
+
+
+.button--primary:hover {
+  background:
+    var(--color-primary);
+
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 18px 42px rgba(55, 32, 79, 0.2);
+}
+
+
+.button--primary:hover span {
+  transform:
+    translate(3px, -3px);
+}
+
+
+/* =========================================================
+   BOTÃO OUTLINE
+========================================================= */
+
+.button--outline {
+  border:
+    1px solid var(--color-border);
+
+  background:
+    transparent;
+
+  color:
+    var(--color-text);
+}
+
+
+.button--outline:hover {
+  border-color:
+    rgba(112, 64, 181, 0.38);
+
+  background:
+    rgba(112, 64, 181, 0.05);
+
+  color:
+    var(--color-primary-dark);
+
+  transform:
+    translateY(-2px);
+}
+
+
+/* =========================================================
+   BOTÃO TEXTUAL
+========================================================= */
+
+.button--text {
+  min-height:
+    auto;
+
+  padding:
+    10px 2px;
+
+  border-radius:
+    0;
+
+  color:
+    var(--color-text-soft);
+}
+
+
+.button--text::after {
+  content:
+    "";
+
+  position:
+    absolute;
+
+  right:
+    0;
+
+  bottom:
+    3px;
+
+  left:
+    0;
+
+  height:
+    1px;
+
+  background:
+    var(--color-primary);
+
+  transform:
+    scaleX(0);
+
+  transform-origin:
+    right center;
+
+  transition:
+    transform var(--transition-base);
+}
+
+
+.button--text:hover {
+  color:
+    var(--color-primary-dark);
+}
+
+
+.button--text:hover::after {
+  transform:
+    scaleX(1);
+
+  transform-origin:
+    left center;
+}
+
+
+.button--text:hover span {
+  transform:
+    translateY(3px);
+}
+
+
+/* =========================================================
+   LINKS
+========================================================= */
+
+.text-link {
+  position:
+    relative;
+
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  gap:
+    10px;
+
+  color:
+    var(--color-primary-dark);
+
+  font-size:
+    0.92rem;
+
+  font-weight:
+    500;
+}
+
+
+.text-link::after {
+  content:
+    "";
+
+  position:
+    absolute;
+
+  right:
+    0;
+
+  bottom:
+    -4px;
+
+  left:
+    0;
+
+  height:
+    1px;
+
+  background:
+    currentColor;
+
+  transform:
+    scaleX(0);
+
+  transform-origin:
+    right;
+
+  transition:
+    transform var(--transition-base);
+}
+
+
+.text-link:hover::after {
+  transform:
+    scaleX(1);
+
+  transform-origin:
+    left;
+}
+
+
+/* =========================================================
+   LINHAS / DIVISORES
+========================================================= */
+
+.divider {
+  width:
+    100%;
+
+  height:
+    1px;
+
+  background:
+    var(--color-border);
+}
+
+
+/* =========================================================
+   TEXTO EDITORIAL
+========================================================= */
+
+.editorial-text {
+  font-family:
+    var(--font-display);
+
+  font-size:
+    clamp(2.5rem, 4.5vw, 5rem);
+
+  font-weight:
+    400;
+
+  line-height:
+    1;
+
+  letter-spacing:
+    -0.035em;
+}
+
+
+.editorial-text em {
+  color:
+    var(--color-primary);
+
+  font-style:
+    italic;
+}
+
+
+/* =========================================================
+   ELEMENTO DECORATIVO
+========================================================= */
+
+.soft-glow {
+  position:
+    absolute;
+
+  width:
+    500px;
+
+  height:
+    500px;
+
+  border-radius:
+    50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(168, 139, 209, 0.16) 0%,
+      rgba(168, 139, 209, 0.07) 36%,
+      rgba(168, 139, 209, 0) 72%
+    );
+
+  pointer-events:
+    none;
+}
+
+
+/* =========================================================
+   CLASSES UTILITÁRIAS
+========================================================= */
+
+.no-scroll {
+  overflow:
+    hidden;
+}
+
+
+.text-primary {
+  color:
+    var(--color-primary);
+}
+
+
+.text-soft {
+  color:
+    var(--color-text-soft);
+}
+
+
+/* =========================================================
+   ESTADO INICIAL PARA FUTURAS ANIMAÇÕES
+
+   Ainda NÃO aplicamos opacity: 0 aqui.
+   Isso evita sumir com conteúdo enquanto o JS
+   das animações ainda não estiver configurado.
+========================================================= */
+
+[data-reveal],
+[data-reveal-line],
+[data-hero-image] {
+  will-change:
+    transform,
+    opacity;
+}
+
+
+/* =========================================================
+   REDUÇÃO DE MOVIMENTO
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior:
+      auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration:
+      0.01ms !important;
+
+    animation-iteration-count:
+      1 !important;
+
+    transition-duration:
+      0.01ms !important;
+
+    scroll-behavior:
+      auto !important;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   WHATSAPP FLUTUANTE
+========================================================= */
+
+.floating-whatsapp {
+  position: fixed;
+
+  z-index: 1500;
+
+  right: 28px;
+
+  bottom: 62px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-end;
+
+  gap: 14px;
+}
+
+
+/* =========================================================
+   BOTÃO
+========================================================= */
+
+.floating-whatsapp__button {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 62px;
+
+  height: 62px;
+
+  border-radius: 50%;
+
+  background:
+    #25d366;
+
+  color:
+    #ffffff;
+
+  box-shadow:
+    0 16px 38px rgba(21, 120, 61, 0.26);
+
+  isolation: isolate;
+
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+
+.floating-whatsapp__button:hover {
+  transform:
+    translateY(-4px)
+    scale(1.04);
+
+  box-shadow:
+    0 20px 48px rgba(21, 120, 61, 0.34);
+}
+
+
+/* =========================================================
+   ÍCONE
+========================================================= */
+
+.floating-whatsapp__icon {
+  position: relative;
+
+  z-index: 3;
+
+  width: 31px;
+
+  height: 31px;
+}
+
+
+/* =========================================================
+   PULSO
+========================================================= */
+
+.floating-whatsapp__pulse {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: -1;
+
+  border-radius: 50%;
+
+  background:
+    rgba(37, 211, 102, 0.34);
+
+  animation:
+    whatsappPulse
+    2.2s
+    cubic-bezier(0.4, 0, 0.2, 1)
+    infinite;
+}
+
+
+@keyframes whatsappPulse {
+
+  0% {
+    opacity: 0.65;
+
+    transform:
+      scale(1);
+  }
+
+  70% {
+    opacity: 0;
+
+    transform:
+      scale(1.55);
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      scale(1.55);
+  }
+
+}
+
+
+/* =========================================================
+   BALÃO
+========================================================= */
+
+.floating-whatsapp__bubble {
+  position: relative;
+
+  width: 240px;
+
+  padding:
+    16px 42px 16px 18px;
+
+  border:
+    1px solid rgba(112, 64, 181, 0.1);
+
+  border-radius:
+    18px 18px 4px 18px;
+
+  background:
+    rgba(255, 255, 255, 0.96);
+
+  box-shadow:
+    0 18px 48px rgba(36, 19, 51, 0.14);
+
+  backdrop-filter:
+    blur(16px);
+
+  -webkit-backdrop-filter:
+    blur(16px);
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  transform:
+    translateY(12px)
+    scale(0.96);
+
+  transform-origin:
+    right bottom;
+
+  pointer-events:
+    none;
+
+  transition:
+    opacity 450ms cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 450ms,
+    transform 450ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+/* =========================================================
+   BALÃO VISÍVEL
+========================================================= */
+
+.floating-whatsapp__bubble.is-visible {
+  opacity: 1;
+
+  visibility: visible;
+
+  transform:
+    translateY(0)
+    scale(1);
+
+  pointer-events: auto;
+}
+
+
+/* =========================================================
+   PONTA DO BALÃO
+========================================================= */
+
+.floating-whatsapp__bubble::after {
+  content: "";
+
+  position: absolute;
+
+  right: 19px;
+
+  bottom: -8px;
+
+  width: 16px;
+
+  height: 16px;
+
+  background:
+    rgba(255, 255, 255, 0.96);
+
+  transform:
+    rotate(45deg);
+
+  border-right:
+    1px solid rgba(112, 64, 181, 0.08);
+
+  border-bottom:
+    1px solid rgba(112, 64, 181, 0.08);
+}
+
+
+/* =========================================================
+   LINK DO BALÃO
+========================================================= */
+
+.floating-whatsapp__bubble-link {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+
+/* =========================================================
+   LABEL
+========================================================= */
+
+.floating-whatsapp__bubble-label {
+  color:
+    var(--color-primary);
+
+  font-size:
+    0.58rem;
+
+  font-weight:
+    600;
+
+  line-height:
+    1;
+
+  letter-spacing:
+    0.13em;
+
+  text-transform:
+    uppercase;
+}
+
+
+/* =========================================================
+   TEXTO PRINCIPAL
+========================================================= */
+
+.floating-whatsapp__bubble-link strong {
+  color:
+    var(--color-primary-dark);
+
+  font-family:
+    var(--font-display);
+
+  font-size:
+    1.13rem;
+
+  font-weight:
+    400;
+
+  line-height:
+    1.1;
+}
+
+
+/* =========================================================
+   FECHAR
+========================================================= */
+
+.floating-whatsapp__close {
+  position: absolute;
+
+  z-index: 3;
+
+  top: 9px;
+
+  right: 10px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 25px;
+
+  height: 25px;
+
+  border-radius: 50%;
+
+  color:
+    var(--color-text-light);
+
+  font-family:
+    Arial,
+    sans-serif;
+
+  font-size:
+    1rem;
+
+  font-weight:
+    300;
+
+  line-height:
+    1;
+
+  transition:
+    background-color var(--transition-base),
+    color var(--transition-base),
+    transform var(--transition-base);
+}
+
+
+.floating-whatsapp__close:hover {
+  background:
+    rgba(112, 64, 181, 0.08);
+
+  color:
+    var(--color-primary-dark);
+
+  transform:
+    rotate(90deg);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   ANIMAÇÕES GLOBAIS
+========================================================= */
+
+
+/* =========================================================
+   REVEAL
+========================================================= */
+
+.js-animations [data-reveal] {
+  opacity: 0;
+
+  transform:
+    translateY(22px);
+
+  transition:
+    opacity 800ms
+      cubic-bezier(0.16, 1, 0.3, 1)
+      var(--reveal-delay, 0ms),
+
+    transform 800ms
+      cubic-bezier(0.16, 1, 0.3, 1)
+      var(--reveal-delay, 0ms);
+}
+
+
+.js-animations [data-reveal].is-visible {
+  opacity: 1;
+
+  transform:
+    translateY(0);
+}
+
+
+/* =========================================================
+   REVEAL DAS LINHAS
+========================================================= */
+
+.js-animations [data-reveal-line] {
+  opacity: 0;
+
+  transform:
+    translateY(34px);
+
+  filter:
+    blur(3px);
+
+  transition:
+    opacity 900ms
+      cubic-bezier(0.16, 1, 0.3, 1)
+      var(--line-delay, 0ms),
+
+    transform 900ms
+      cubic-bezier(0.16, 1, 0.3, 1)
+      var(--line-delay, 0ms),
+
+    filter 900ms
+      cubic-bezier(0.16, 1, 0.3, 1)
+      var(--line-delay, 0ms);
+}
+
+
+.js-animations [data-reveal-line].is-visible {
+  opacity: 1;
+
+  transform:
+    translateY(0);
+
+  filter:
+    blur(0);
+}
+
+
+/* =========================================================
+   HERO IMAGE REVEAL
+========================================================= */
+
+.js-animations [data-hero-image] {
+  opacity: 0;
+
+  clip-path:
+    inset(
+      0 0 100% 0
+      round 42px 8px 42px 8px
+    );
+
+  transform:
+    translateY(20px);
+
+  transition:
+    clip-path 1100ms
+      cubic-bezier(0.16, 1, 0.3, 1),
+
+    opacity 700ms ease,
+
+    transform 1100ms
+      cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+.js-animations [data-hero-image].is-visible {
+  opacity: 1;
+
+  clip-path:
+    inset(
+      0 0 0 0
+      round 42px 8px 42px 8px
+    );
+
+  transform:
+    translateY(0);
+}
+
+
+/* =========================================================
+   PERFORMANCE
+========================================================= */
+
+[data-reveal],
+[data-reveal-line],
+[data-hero-image] {
+  backface-visibility:
+    hidden;
+}
+
+
+/* =========================================================
+   ACESSIBILIDADE
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  [data-reveal],
+  [data-reveal-line],
+  [data-hero-image] {
+    opacity:
+      1 !important;
+
+    transform:
+      none !important;
+
+    filter:
+      none !important;
+
+    clip-path:
+      none !important;
+  }
+
+}

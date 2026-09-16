@@ -1,0 +1,401 @@
+/* =========================================================
+   LUCIANE CORRÊA
+   PSICÓLOGA E HIPNOTERAPEUTA
+
+   ARQUIVO: header.css
+   Header principal — Desktop
+========================================================= */
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
+
+  z-index: 1000;
+
+  width: 100%;
+  height: var(--header-height);
+
+  background:
+    rgba(36, 19, 51, 0.96);
+
+  border-bottom:
+    1px solid rgba(255, 255, 255, 0.07);
+
+  backdrop-filter:
+    blur(18px);
+
+  -webkit-backdrop-filter:
+    blur(18px);
+
+  transition:
+    height var(--transition-base),
+    background-color var(--transition-base),
+    box-shadow var(--transition-base),
+    border-color var(--transition-base);
+}
+
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.header__container {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  height: 100%;
+}
+
+
+/* =========================================================
+   MARCA / LOGO
+========================================================= */
+
+.header__brand {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  flex-shrink: 0;
+
+  width: 195px;
+
+  height: 100%;
+}
+
+
+.header__logo {
+  display: block;
+
+  width: 100%;
+
+  max-height: 68px;
+
+  object-fit: contain;
+
+  object-position: left center;
+
+  transition:
+    transform var(--transition-base),
+    opacity var(--transition-base);
+}
+
+
+.header__brand:hover .header__logo {
+  transform:
+    translateY(-1px);
+
+  opacity:
+    0.9;
+}
+
+
+/* =========================================================
+   NAVEGAÇÃO
+========================================================= */
+
+.header__nav {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 36px;
+
+  margin-left: auto;
+
+  margin-right: 42px;
+}
+
+
+/* =========================================================
+   LINKS
+========================================================= */
+
+.header__link {
+  position: relative;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  min-height: 42px;
+
+  color:
+    rgba(255, 255, 255, 0.72);
+
+  font-size:
+    0.84rem;
+
+  font-weight:
+    400;
+
+  line-height:
+    1;
+
+  letter-spacing:
+    0.01em;
+
+  transition:
+    color var(--transition-base);
+}
+
+
+.header__link::after {
+  content: "";
+
+  position: absolute;
+
+  right: 0;
+
+  bottom: 7px;
+
+  left: 0;
+
+  height: 1px;
+
+  background:
+    var(--color-primary-light);
+
+  transform:
+    scaleX(0);
+
+  transform-origin:
+    right center;
+
+  transition:
+    transform var(--transition-base);
+}
+
+
+.header__link:hover {
+  color:
+    var(--color-white);
+}
+
+
+.header__link:hover::after {
+  transform:
+    scaleX(1);
+
+  transform-origin:
+    left center;
+}
+
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.header__cta {
+  position: relative;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 11px;
+
+  min-height: 48px;
+
+  padding:
+    0 22px;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.17);
+
+  border-radius:
+    var(--radius-full);
+
+  background:
+    rgba(255, 255, 255, 0.08);
+
+  color:
+    var(--color-white);
+
+  font-size:
+    0.82rem;
+
+  font-weight:
+    500;
+
+  line-height:
+    1;
+
+  letter-spacing:
+    -0.005em;
+
+  overflow:
+    hidden;
+
+  isolation:
+    isolate;
+
+  transition:
+    color var(--transition-base),
+    background-color var(--transition-base),
+    border-color var(--transition-base),
+    transform var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+
+/* FUNDO ANIMADO */
+
+.header__cta::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  z-index: -1;
+
+  background:
+    var(--color-white);
+
+  transform:
+    translateY(105%);
+
+  transition:
+    transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+.header__cta:hover {
+  border-color:
+    var(--color-white);
+
+  color:
+    var(--color-primary-deep);
+
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 12px 34px rgba(0, 0, 0, 0.14);
+}
+
+
+.header__cta:hover::before {
+  transform:
+    translateY(0);
+}
+
+
+/* =========================================================
+   SETA CTA
+========================================================= */
+
+.header__cta-arrow {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size:
+    0.95rem;
+
+  transition:
+    transform var(--transition-base);
+}
+
+
+.header__cta:hover .header__cta-arrow {
+  transform:
+    translate(3px, -3px);
+}
+
+
+/* =========================================================
+   DETALHE INFERIOR
+
+   Pequena luminosidade central para retirar
+   o aspecto de "barra chapada".
+========================================================= */
+
+.header::after {
+  content: "";
+
+  position: absolute;
+
+  right: 18%;
+  bottom: -1px;
+
+  width: 260px;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(168, 139, 209, 0.6),
+      transparent
+    );
+
+  pointer-events: none;
+
+  opacity: 0.65;
+}
+
+
+/* =========================================================
+   ESTADO COM SCROLL
+
+   Será ativado posteriormente pelo main.js.
+========================================================= */
+
+.header.header--scrolled {
+  height: var(--header-scrolled-height);
+
+  background:
+    rgba(30, 15, 43, 0.98);
+
+  border-bottom-color:
+    rgba(255, 255, 255, 0.09);
+
+  box-shadow:
+    0 14px 50px rgba(23, 12, 31, 0.14);
+}
+
+
+.header.header--scrolled .header__logo {
+  transform:
+    scale(0.93);
+
+  transform-origin:
+    left center;
+}
+
+
+/* =========================================================
+   MENU MOBILE
+
+   Mantido oculto no desktop.
+   Configuraremos somente na etapa responsiva.
+========================================================= */
+
+.header__menu {
+  display: none;
+}
+
+
+.mobile-menu {
+  display: none;
+}
